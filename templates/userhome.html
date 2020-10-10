@@ -1,0 +1,93 @@
+{% extends "loggedinlayout.html" %}
+{% block content %}
+
+<p>
+    Hello, {{spotify.me()["display_name"]}} please enter the url of the Apple Music 
+     playlist you want to make into a 
+     Spotify playlist
+</p>
+<div class="column is-half">
+<div class="field">
+  <label class="label is-small">Playlist Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Playlist Name" id="PlaylistNameInput">
+  </div>
+</div>
+<lable class="label is-small">Playlist Description</lable>
+<textarea class="textarea has-fixed-size" placeholder="Can leave empty" id="PlaylistDescriptionTextarea">
+</textarea>
+<div class="field mt-5">
+<label class="label is-small">Do you want the playlist to be private?</label>
+</div>
+<div class="select">
+  <select id="privateDropDown">
+    <option>No</option>
+    <option>Yes</option>
+  </select>
+</div>
+</div>
+<div class="column is-three-quarters">
+<div class="field mb-6">
+  <label class="label"></label>
+  <div class="control is-expanded is-rounded" id="playlistInputAndButtonDiv">
+    <input class="input" id="playlistInput" type="text" placeholder="Apple Music playlist URL">
+    <p class="help is-size1 is-danger is-hidden mt-0" id="TextNoticeForGetPlaylist">
+      This field cannot be empty
+      </p>
+  </div>
+    <div class="control is-primary is-rounded mt-6" id="getPlaylistButton">
+    <button class="button" id="PlaylistButton">Get Playlist</button>
+    </div>
+    </div>
+  </div>
+<div class="card" id="TableCard">
+  <div class="table-container">
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">
+      <thead>
+        <tr>
+          <th><abbr title="Number">No.</abbr></th>
+          <th><abbr title="Add Playlist">Add</abbr></th>
+          <th><abbr title="Song & Artist">Song</abbr></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th><abbr title="Number" id="TotalNumberOfSongs">Total:</abbr></th>
+          <th><abbr title="Add Playlist" id="NumberOfSelectedSongs">Selected:</abbr></th>
+          <th><abbr title="Song & Artist">Song</abbr></th>
+        </tr>
+      </tfoot>
+      <tbody id="SongTableBody">
+      </tbody>
+    </table>
+  </div>
+</div>
+  <!---
+            <td>
+            1
+          </td>
+          <td>
+            <label class="checkbox">
+              <input type="checkbox">
+              Add Song
+            </label>
+          </td>
+  -->
+
+
+
+  <article class="message is-hidden" id="resultMessage">
+    <div class="message-header">
+      <p>Good News!</p>
+      <button class="delete" aria-label="delete"></button>
+    </div>
+    <div class="message-body">
+      We have updated your Spotify account! <br>if you have any question please..... ............................................
+    </div>
+  </article>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur minima ut accusamus deserunt libero eius nobis dolore quis totam ullam, atque optio corrupti fuga voluptatum illum. Perferendis voluptates molestiae nostrum quod optio aspernatur deserunt, dignissimos, vero repudiandae ex neque dolorum nesciunt odio veniam excepturi corrupti reprehenderit voluptas dolor minus. Temporibus.</p>
+{% endblock content %}
+
+
+
+

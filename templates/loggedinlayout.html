@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlayList Maker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+      <nav class="navbar has-shadow is-black is-hoverable">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" id="burger">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu" id="nav-links">
+          <div class="navbar-end">
+              <a href="/about" class="navbar-item">About</a>
+              <a href="/about" class="navbar-item">Donate</a>
+              <a href="/sign_out" class="navbar-item">Sign Out</a>
+          </div>
+      </nav>
+      <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Primary bold title
+            </h1>
+            <h2 class="subtitle">
+              Primary bold subtitle
+            </h2>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+      <div class="container">
+        <div class="content">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+  </section>
+  <script type="text/javascript" src="static/index.js" charset="utf-8"></script>
+</body>
+</html>

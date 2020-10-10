@@ -1,0 +1,12 @@
+#nav-toggle-state {
+    display: none;
+  }
+  
+  #nav-toggle-state:checked ~ .nav-menu {
+    display: block;
+  }
+
+  #TableCard{
+    max-height: 13em;
+    overflow: auto;
+  }
