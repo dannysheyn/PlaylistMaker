@@ -3,7 +3,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PlayList Maker</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='/node_modules/bulma/css/bulma.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyles.css')}}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
@@ -23,23 +26,19 @@
       <section class="hero is-medium is-primary is-bold">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Primary bold title
-            </h1>
-            <h2 class="subtitle">
-              Primary bold subtitle
-            </h2>
+            <div class="card">
+              <section class="section">
+                <div class="container">
+                  <div class="content">
+                    {% block content %}
+                    {% endblock %}
+                  </div>
+                </div>
+            </section>
+            </div>
           </div>
         </div>
       </section>
-      <section class="section">
-      <div class="container">
-        <div class="content">
-          {% block content %}
-          {% endblock %}
-        </div>
-      </div>
-  </section>
   <script type="text/javascript" src="static/index.js" charset="utf-8"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+ thead, tbody { display: block; }
+
+  tbody {
+      height: 400px;    /*   Just for the demo          */
+      overflow-y: auto;    /* Trigger vertical scroll    */
+      overflow-x: hidden;  /* Hide the horizontal scroll */
+  }
+
+
+  style="height:400px; overflow:auto;
+
+   <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">

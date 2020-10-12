@@ -6,76 +6,100 @@
      playlist you want to make into a 
      Spotify playlist
 </p>
-<div class="column is-half">
-<div class="field">
-  <label class="label is-small">Playlist Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Playlist Name" id="PlaylistNameInput">
-  </div>
-</div>
-<lable class="label is-small">Playlist Description</lable>
-<textarea class="textarea has-fixed-size" placeholder="Can leave empty" id="PlaylistDescriptionTextarea">
-</textarea>
-<div class="field mt-5">
-<label class="label is-small">Do you want the playlist to be private?</label>
-</div>
-<div class="select">
-  <select id="privateDropDown">
-    <option>No</option>
-    <option>Yes</option>
-  </select>
-</div>
-</div>
-<div class="column is-three-quarters">
-<div class="field mb-6">
-  <label class="label"></label>
-  <div class="control is-expanded is-rounded" id="playlistInputAndButtonDiv">
-    <input class="input" id="playlistInput" type="text" placeholder="Apple Music playlist URL">
-    <p class="help is-size1 is-danger is-hidden mt-0" id="TextNoticeForGetPlaylist">
-      This field cannot be empty
-      </p>
-  </div>
-    <div class="control is-primary is-rounded mt-6" id="getPlaylistButton">
-    <button class="button" id="PlaylistButton">Get Playlist</button>
+<h3>Steps to get the Playlist</h3>
+<div class="column is-three-fifths is-offset-one-fifth">
+  <div class="card" id="slide">
+    <!--- steps section-->
+    <div class="content">
+      <ul class="steps is-balanced is-small has-content-centered is-horizontal mb-0 ml-0 mr-0" 
+      id="stepSelectionList" style="list-style: none;">
+          <li class="steps-segment is-active" id="step1">
+            <a href="#" class="steps-marker"></a>
+            <div class="steps-content">
+              <p>Choose a name.</p>
+            </div>
+          </li>
+        <li class="steps-segment" style="margin-top: 0%" id="step2">
+          <a href="#" class="steps-marker"></a>
+          <div class="steps-content">
+            <p>Add description.</p>
+          </div>
+        </li>
+        <li class="steps-segment" style="margin-top: 0%;" id="step3">
+          <a href="#" class="steps-marker"></a>
+          <div class="steps-content">
+            <p>Select Privacy.</p>
+          </div>
+        </li>
+        <li class="steps-segment" style="margin-top: 0%;" id="step4">
+          <a href="#" class="steps-marker"></a>
+          <div class="steps-content">
+            <p>Insert URL.</p>
+          </div>
+        </li>
+      </ul>
     </div>
-    </div>
-  </div>
-<div class="card" id="TableCard">
-  <div class="table-container">
-    <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">
-      <thead>
-        <tr>
-          <th><abbr title="Number">No.</abbr></th>
-          <th><abbr title="Add Playlist">Add</abbr></th>
-          <th><abbr title="Song & Artist">Song</abbr></th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th><abbr title="Number" id="TotalNumberOfSongs">Total:</abbr></th>
-          <th><abbr title="Add Playlist" id="NumberOfSelectedSongs">Selected:</abbr></th>
-          <th><abbr title="Song & Artist">Song</abbr></th>
-        </tr>
-      </tfoot>
-      <tbody id="SongTableBody">
-      </tbody>
-    </table>
-  </div>
+      <div class="card-content">
+        <div class="field" id="InputCardField">
+          <div class="field" id="playlistNameField">
+            <label class="label is-small">Playlist Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Playlist Name" id="PlaylistNameInput">
+            </div>
+          </div>
+        </div>
+        <div class="field is-hidden" id="PlaylistDescription">
+          <lable class="label is-small">Playlist Description</lable>
+          <textarea class="textarea has-fixed-size" rows="1" placeholder="Can leave empty" id="PlaylistDescriptionTextarea">
+          </textarea>
+        </div>
+        <div class="field mt-5 is-hidden" id="privateSettingDropdown">
+        <label class="label is-small">Do you want the playlist to be private?</label>
+        <div class="select">
+          <select id="privateDropDown">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        </div>
+        <div class="field is-hidden mb-6" id="getPlaylistFields">
+          <div class="control is-rounded" id="playlistInputAndButtonDiv">
+            <input class="input" id="playlistInput" type="text" placeholder="Apple Music playlist URL">
+            <p class="help is-size1 is-danger is-hidden mt-0" id="TextNoticeForGetPlaylist">
+              This field cannot be empty
+              </p>
+          </div>
+            <div class="control mt-6" id="getPlaylistButton">
+            <button class="button is-rounded is-outlined is-centered" id="PlaylistButton">Get Playlist</button>
+            </div>
+            </div>
+          <!--- buttons-->
+        <nav class="pagination is-rounded mx-5 mb-1 mt-5" role="navigation" aria-label="pagination">
+          <a class="pagination-previous" id="prevStage">Previous</a>
+          <a class="pagination-next" id="nextStage">Next Stage</a>
+        </nav>
 </div>
-  <!---
-            <td>
-            1
-          </td>
-          <td>
-            <label class="checkbox">
-              <input type="checkbox">
-              Add Song
-            </label>
-          </td>
-  -->
+</div>
 
-
-
+  <div class="column table-container is-hidden">
+    <p>Please deselect the songs you wouldnot wanto to add the the playlist </p>
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">
+        <thead>
+          <tr>
+            <th><abbr title="Number">No.</abbr></th>
+            <th><abbr title="Add Playlist">Songs</abbr></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th><abbr title="Number" id="TotalNumberOfSongs">Total:</abbr></th>
+            <th><abbr title="Add Playlist" id="NumberOfSelectedSongs">Selected:</abbr></th>
+          </tr>
+        </tfoot>
+        <tbody id="SongTableBody" class="tbody-scrollable">
+        </tbody>
+      </table>
+    </div>
   <article class="message is-hidden" id="resultMessage">
     <div class="message-header">
       <p>Good News!</p>
@@ -85,7 +109,9 @@
       We have updated your Spotify account! <br>if you have any question please..... ............................................
     </div>
   </article>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur minima ut accusamus deserunt libero eius nobis dolore quis totam ullam, atque optio corrupti fuga voluptatum illum. Perferendis voluptates molestiae nostrum quod optio aspernatur deserunt, dignissimos, vero repudiandae ex neque dolorum nesciunt odio veniam excepturi corrupti reprehenderit voluptas dolor minus. Temporibus.</p>
+<div class="section">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur minima ut accusamus deserunt libero eius nobis dolore quis totam ullam, atque optio corrupti fuga voluptatum illum. Perferendis voluptates molestiae nostrum quod optio aspernatur deserunt, dignissimos, vero repudiandae ex neque dolorum nesciunt odio veniam excepturi corrupti reprehenderit voluptas dolor minus. Temporibus.</p>
+</div>
 {% endblock content %}
 
 

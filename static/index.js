@@ -1,12 +1,16 @@
 // to do: 
 // get parse the html
 
-var url = new URL('http://127.0.0.1:5000/request_html');
-var list_url = new URL('http://127.0.0.1:5000/find_songs');
+const url = new URL('http://127.0.0.1:5000/request_html');
+const list_url = new URL('http://127.0.0.1:5000/find_songs');
+
 
 filterByNotEmpty = function filterByNotEmpty(elem){
 	return elem != "";
 }
+
+
+
 
 const bruger = document.querySelector("#burger");
 const playlistButton = document.querySelector("#PlaylistButton");
@@ -17,6 +21,22 @@ const textNoticeForGetPlaylist = document.querySelector("#TextNoticeForGetPlayli
 const privateDropDown = document.querySelector("#privateDropDown");
 const descriptionTextarea = document.querySelector("#PlaylistDescriptionTextarea");
 const playlistNameInput = document.querySelector("#PlaylistNameInput");
+
+const prevStageButton = document.querySelector("#prevStage");
+const nextStageButton = document.querySelector("#nextStage");
+
+const stage1 = document.querySelector("#step1");
+const stage2 = document.querySelector("#step2");
+const stage3 = document.querySelector("#step3");
+const stage4 = document.querySelector("#step4");
+
+const inputCardField = document.querySelector("#InputCardField");
+
+const playlistDescription = document.querySelector("#PlaylistDescription");
+const playlistNameField = document.querySelector("#playlistNameField"); 
+const privateSettingDropdown = document.querySelector("#privateSettingDropdown"); 
+const getPlaylistFields = document.querySelector("#getPlaylistFields");
+
 window.onload=function(){
         bruger.addEventListener('click', () => {
             nabarMenu.classList.toggle('is-active');
@@ -30,7 +50,55 @@ window.onload=function(){
           else {
             playlistInput.classList.remove('is-danger');
             playlistInput.classList.add('is-danger');
-            textNoticeForGetPlaylist.classList.toggle("is-hidden")
+            textNoticeForGetPlaylist.classList.toggle("is-hidden");
+          }
+        })
+
+        prevStageButton.addEventListener('click', () => {
+          if(stage2.classList.contains('is-active'))
+          {
+            stage2.classList.toggle('is-active');
+            stage1.classList.toggle('is-active');
+            playlistDescription.classList.toggle('is-hidden');
+            playlistNameField.classList.toggle('is-hidden');
+          }
+          else if(stage3.classList.contains('is-active'))
+          {
+            stage3.classList.toggle('is-active');
+            stage2.classList.toggle('is-active');
+            privateSettingDropdown.classList.toggle('is-hidden');
+            playlistDescription.classList.toggle('is-hidden');
+          }
+          else if(stage4.classList.contains('is-active'))
+          {
+            stage4.classList.toggle('is-active');
+            stage3.classList.toggle('is-active');
+            getPlaylistFields.classList.toggle('is-hidden');
+            privateSettingDropdown.classList.toggle('is-hidden');
+          }
+        })
+
+        nextStageButton.addEventListener('click', () => {
+          if(stage1.classList.contains('is-active'))
+          {
+            stage1.classList.toggle('is-active')
+            stage2.classList.toggle('is-active')
+            playlistNameField.classList.toggle('is-hidden')
+            playlistDescription.classList.toggle('is-hidden');
+          }
+          else if(stage2.classList.contains('is-active'))
+          {
+            stage2.classList.toggle('is-active')
+            stage3.classList.toggle('is-active')
+            playlistDescription.classList.toggle('is-hidden');
+            privateSettingDropdown.classList.toggle('is-hidden');
+          }
+          else if(stage3.classList.contains('is-active'))
+          {
+            stage3.classList.toggle('is-active')
+            stage4.classList.toggle('is-active')
+            privateSettingDropdown.classList.toggle('is-hidden');
+            getPlaylistFields.classList.toggle('is-hidden');
           }
         })
   }
