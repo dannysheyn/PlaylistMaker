@@ -2,13 +2,10 @@ import pymongo
 from user import User
 from time import gmtime, strftime
 
-MONGODB_DB = 'PlaylistExchange'
-MONGODB_COLLECTION = 'UserData'
-
 '''
 MONGODB_DB = 'PlaylistExchange'
 MONGODB_COLLECTTION = 'UserData'
-client = pymongo.MongoClient('mongodb+srv://Dadmin:4yjqRA9z7CduBMD@cluster0.miqhi.mongodb.net/test')
+client = pymongo.MongoClient('mongodb+srv://Dadmin:<password>@cluster0.miqhi.mongodb.net/test')
 db = client[MONGODB_DB]
 col = db[MONGODB_COLLECTTION]
 '''
@@ -19,7 +16,7 @@ class MongoUserHandler:
         self.MONGODB_DB = 'PlaylistExchange'
         self.MONGODB_COLLECTION = 'UserData'
         self.MONGODB_SESSION = 'UserSession'
-        self.client = pymongo.MongoClient('mongodb+srv://Dadmin:4yjqRA9z7CduBMD@cluster0.miqhi.mongodb.net/test')
+        self.client = pymongo.MongoClient('mongodb+srv://Dadmin:<password>@cluster0.miqhi.mongodb.net/test')
         self.db = self.client[self.MONGODB_DB]
         self.db_collection = self.db[self.MONGODB_COLLECTION]
 
