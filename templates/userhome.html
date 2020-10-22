@@ -1,6 +1,6 @@
 {% extends "loggedinlayout.html" %}
 {% block content %}
-
+<div id="BeforeImport">
 <p>
     Hello, {{spotify.me()["display_name"]}} please enter the url of the Apple Music 
      playlist you want to make into a 
@@ -50,10 +50,9 @@
         </div>
         <div class="field is-hidden" id="PlaylistDescription">
           <lable class="label is-small">Playlist Description</lable>
-          <textarea class="textarea has-fixed-size" rows="1" placeholder="Can leave empty" id="PlaylistDescriptionTextarea">
-          </textarea>
+          <textarea class="textarea has-fixed-size mt-0" rows="1" placeholder="Can leave empty" id="PlaylistDescriptionTextarea"></textarea>
         </div>
-        <div class="field mt-5 is-hidden" id="privateSettingDropdown">
+        <div class="field ml-5 is-hidden is-centered" id="privateSettingDropdown">
         <label class="label is-small">Do you want the playlist to be private?</label>
         <div class="select">
           <select id="privateDropDown">
@@ -62,27 +61,33 @@
           </select>
         </div>
         </div>
-        <div class="field is-hidden mb-6" id="getPlaylistFields">
+        <div class="field is-hidden" id="getPlaylistFields">
           <div class="control is-rounded" id="playlistInputAndButtonDiv">
+            <lable class="label is-small">Enter the playlist URL</lable>
             <input class="input" id="playlistInput" type="text" placeholder="Apple Music playlist URL">
             <p class="help is-size1 is-danger is-hidden mt-0" id="TextNoticeForGetPlaylist">
               This field cannot be empty
               </p>
           </div>
-            <div class="control mt-6" id="getPlaylistButton">
-            <button class="button is-rounded is-outlined is-centered" id="PlaylistButton">Get Playlist</button>
-            </div>
             </div>
           <!--- buttons-->
         <nav class="pagination is-rounded mx-5 mb-1 mt-5" role="navigation" aria-label="pagination">
+          <button class="button pagination-next is-rounded is-outlined has-background-white is-pulled-right is-hidden" id="playlistButton">Get Playlist</button >
           <a class="pagination-previous" id="prevStage">Previous</a>
-          <a class="pagination-next" id="nextStage">Next Stage</a>
+          <a class="pagination-next is-primary" id="nextStage">Next Stage</a>
         </nav>
 </div>
 </div>
-
-  <div class="column table-container is-hidden">
-    <p>Please deselect the songs you wouldnot wanto to add the the playlist </p>
+<!-- modal card of selection the playlist-->
+<div class="modal" id="tableModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose The Songs You Want!</p>
+      <button class="delete" aria-label="close" id="modalCloseButton"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
       <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">
         <thead>
           <tr>
@@ -99,7 +104,39 @@
         <tbody id="SongTableBody" class="tbody-scrollable">
         </tbody>
       </table>
-    </div>
+      <!-- End Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="SaveChangesButton">Save changes</button>
+      <button class="button" id="CanselPlaylistButton" >Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" >
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="column table-container">
+      <p>Please deselect the songs you wouldnot wanto to add the the playlist </p>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-scrollable">
+          <thead>
+            <tr>
+              <th><abbr title="Number">No.</abbr></th>
+              <th><abbr title="Add Playlist">Songs</abbr></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th><abbr title="Number" id="TotalNumberOfSongs">Total:</abbr></th>
+              <th><abbr title="Add Playlist" id="NumberOfSelectedSongs">Selected:</abbr></th>
+            </tr>
+          </tfoot>
+          <tbody id="SongTableBody" class="tbody-scrollable">
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
   <article class="message is-hidden" id="resultMessage">
     <div class="message-header">
       <p>Good News!</p>
@@ -111,6 +148,27 @@
   </article>
 <div class="section">
   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur minima ut accusamus deserunt libero eius nobis dolore quis totam ullam, atque optio corrupti fuga voluptatum illum. Perferendis voluptates molestiae nostrum quod optio aspernatur deserunt, dignissimos, vero repudiandae ex neque dolorum nesciunt odio veniam excepturi corrupti reprehenderit voluptas dolor minus. Temporibus.</p>
+</div>
+</div>
+</div>
+
+<div class="container is-hidden" id="ShowAfterPlaylistImport">
+  <div class="card is-hidden" id="successfullPlaylistImport">
+  <section class="section">
+    <h3>Import was successfull!</h3>
+    <p>
+      Thank you for using our service, Please consider supporing us! <br>
+      Check out your new <a href="" id="newPlaylistAncor">playlist!</a>
+    </p>
+</section>
+</div>
+
+  <div class="card is-hidden" id="failedPlaylistImport"> 
+    <section class="section">
+    <h3>Import has failed :(</h3>
+    <p>please try again.</p>
+  </section>
+  </div>
 </div>
 {% endblock content %}
 

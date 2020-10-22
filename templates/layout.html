@@ -14,20 +14,20 @@
           <span aria-hidden="true"></span>
         </a>
         <div class="navbar-menu" id="nav-links">
+          <div class="navbar-start">
+            <a href="/" class="navbar-item">Home</a>
+          </div>
           <div class="navbar-end">
               <a href="/about" class="navbar-item">About</a>
               <a href="/about" class="navbar-item">Sign Up</a>
               <a href="/about" class="navbar-item">Donate</a>
           </div>
       </nav>
-      <section class="section">
-      <div class="container">
-        <div class="content">
+          <section class="hero is-fullheight is-primary is-bold">
           {% block content %}
           {% endblock %}
-        </div>
-      </div>
-  </section>
+        </section>
+
   <script type="text/javascript" src="static/index.js" charset="utf-8"></script>
 </body>
 </html>

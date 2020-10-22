@@ -1,7 +1,15 @@
-{% extends "layout.html" %}
+{% extends "loggedinlayout.html" %}
 {% block content %}
-<p>
- Wellcome to the new app that makes a Spotify playlist form an Apple Music playlist without needing a Apple music id.
+<h1 class="is-size-2">URL2Playlist</h1>
+<p class="is-size-4">
+    Convert an Apple Music playlist to a Spotify Playlist using only an Apple Music playlisyt URL!<br>
 </p>
-<a href={{auth_url}}>Sign in</a>
+<p>
+    How does it work?<br>
+    Sign in via Spotify.<br>
+    Select the new playlist name, description, privacy.<br>
+    enter URL, Select the songs you want and make yourself a new playlist! 
+</p>
+
+<a href={{auth_url}}>Sign in using spotify</a>
 {% endblock content %}
