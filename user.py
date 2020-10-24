@@ -14,6 +14,7 @@ class User:
         self.playlist_converted_count = playlist_converted_count
         self.playlist_converted_datetime = playlist_added_time
         self.total_songs_converted = total_songs_converted
+        self.music_service = 'Spotify'
 
     def to_json(self):
         return json.loads(json.dumps(self.__dict__))

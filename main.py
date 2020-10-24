@@ -5,7 +5,7 @@ TODO: make a user and db system that counts the number of playlist transfers.
 """
 from flask_session import Session
 
-from flask import Flask, render_template, request, session, redirect, Response
+from flask import Flask, render_template, request, session, redirect, Response, send_file
 import uuid
 import os
 import spotipy
@@ -28,7 +28,6 @@ Session(app)
 CORS(app)
 APP_SCOPE = "playlist-read-private, playlist-modify-public"
 
-# Session(app)
 
 
 caches_folder = './.spotify_caches/'
@@ -93,7 +92,30 @@ def request_html():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    spotify = None
+    spotify = None
+    if not session.get('uuid'):
+        # Step 1. Visitor is unknown, give random ID
+        session['uuid'] = str(uuid.uuid4())
+    
+    auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='http://127.0.0.1:5000/',
+                                               cache_path=session_cache_path(),
+                                               show_dialog=True)
+
+    if request.args.get("code"):
+        # Step 3. Being redirected from Spotify auth page
+        auth_manager.get_access_token(request.args.get("code"))
+        return redirect('/about')
+
+    if not auth_manager.get_cached_token():
+        # Step 2. Display sign in link when no token
+        auth_url = auth_manager.get_authorize_url()
+        return render_template('about.html',spotify=spotify , auth_url=auth_url)
+
+    # Step 4. Signed in, display data
+    spotify = spotipy.Spotify(auth_manager=auth_manager)
+    
+    return render_template('about.html',spotify=spotify)
 
 
 @app.route('/sign_out')
@@ -106,13 +128,17 @@ def sign_out():
         print("Error: %s - %s." % (e.filename, e.strerror))
     return redirect('/')
 
+@app.route('/resources/demo.gif')
+def gif():
+     return send_file('resources/demo.gif', mimetype='image/gif')
 
 @app.route('/')
 def index():
+    spotify = None
     if not session.get('uuid'):
         # Step 1. Visitor is unknown, give random ID
         session['uuid'] = str(uuid.uuid4())
-
+    
     auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='http://127.0.0.1:5000/',
                                                cache_path=session_cache_path(),
                                                show_dialog=True)
@@ -125,7 +151,7 @@ def index():
     if not auth_manager.get_cached_token():
         # Step 2. Display sign in link when no token
         auth_url = auth_manager.get_authorize_url()
-        return render_template('home.html', auth_url=auth_url)
+        return render_template('home.html',spotify=spotify , auth_url=auth_url)
 
     # Step 4. Signed in, display data
     spotify = spotipy.Spotify(auth_manager=auth_manager)

@@ -85,6 +85,28 @@ doAfterSongListReturned = function(xmlHttpResponse){
   }
 }
 
+function IsUrlIsCorrect(i_GivenUserURL) {
+  try {
+    givenURL = new URL(i_GivenUserURL);
+    if (givenURL.origin == 'https://music.apple.com'){
+      if (givenURL.pathname != ''){
+        return true;
+      }
+      else {
+        textNoticeForGetPlaylist.innerText = 'No path name to a playlist was given.'
+        return false;
+      }
+    }
+    else {
+      textNoticeForGetPlaylist.innerText = 'This URL is not a valid Apple Music playlist URL.'
+      return false;
+    }
+  } catch (_) {
+    textNoticeForGetPlaylist.innerText = 'The URL that was given in invalid or empty.'
+    return false;
+  }
+}
+
 
 
 window.onload=function(){
@@ -96,7 +118,7 @@ window.onload=function(){
         })
     
         playlistButton.addEventListener('click',() => {
-          if(playlistInput.value != "") {
+          if(IsUrlIsCorrect(playlistInput.value)) {
             playlistButton.classList.toggle('is-loading');
             httpGetAsync(playlistInput.value, parseHtmlgetPlaylist);
           }
