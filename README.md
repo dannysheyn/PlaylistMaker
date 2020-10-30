@@ -1,18 +1,4 @@
-# PlaylistMaker
-This app will take a playlist from Apple music and turn it into a spotify playlist
-
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PlayList Maker</title>
-  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> 
-  <link rel="stylesheet" href="{{ url_for('static', filename='/node_modules/bulma/css/bulma.css')}}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='debug.css')}}">
-
--->
+# PlaylistConverter
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyles.css')}}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
@@ -26,6 +12,7 @@ This app will take a playlist from Apple music and turn it into a spotify playli
                         <h1 class="is-size-2">Playlist Exchange</h1>
                             <section class="section">
                                 <p class="is-size-4">
+                                    This app will take a playlist from Apple music and turn it into a spotify playlist. <br>
                                     Convert an Apple Music playlist to a Spotify Playlist using only an Apple Music playlisyt URL!<br>
                                 </p>
                                 <p>
@@ -46,13 +33,3 @@ This app will take a playlist from Apple music and turn it into a spotify playli
                 </div>
             </section>
             </div>
-        <div class="hero-foot">
-              <p class="has-text-centered mb-1 has-text-black">
-                This website was created by Daniel.S. Please visit the about page for more infomation.
-              </p>
-        </div>
-      </section>
-  <script type="text/javascript" src="static/index.js" charset="utf-8"></script>
-</body>
-</html>
-
