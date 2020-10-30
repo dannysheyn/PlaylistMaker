@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = os.urandom(24)
 app.config.from_object(__name__)
 Session(app)
 CORS(app)
-APP_SCOPE = "playlist-read-private, playlist-modify-public"
+APP_SCOPE = "playlist-read-private, playlist-modify-public, playlist-modify-private, playlist-read-collaborative"
 
 
 
