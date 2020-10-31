@@ -1,8 +1,8 @@
 // to do: 
 // get parse the html
 
-const url = new URL('http://127.0.0.1:5000/request_html');
-const list_url = new URL('http://127.0.0.1:5000/find_songs');
+const url = new URL('https://playliste-exchange.herokuapp.com/request_html');
+const list_url = new URL('https://playliste-exchange.herokuapp.com/find_songs');
 
 
 filterByNotEmpty = function filterByNotEmpty(elem){
