@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # PlaylistConverter
+=======
+# PlaylistMaker
+This app will take a playlist from Apple music and turn it into a spotify playlist
+>>>>>>> 3847f6f4637346d641a36efd50f24fd7d598b685
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyles.css')}}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
