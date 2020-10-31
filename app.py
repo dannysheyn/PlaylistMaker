@@ -51,7 +51,7 @@ def home_page():
 
 @app.route('/find_songs', methods=['POST'])
 def find_songs():
-    auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='http://127.0.0.1:5000/',
+    auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='https://playliste-exchange.herokuapp.com/',
                                                cache_path=session_cache_path(),
                                                show_dialog=True)
     if not auth_manager.get_cached_token():
@@ -98,7 +98,7 @@ def about():
         # Step 1. Visitor is unknown, give random ID
         session['uuid'] = str(uuid.uuid4())
     
-    auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='http://127.0.0.1:5000/',
+    auth_manager = spotipy.oauth2.SpotifyOAuth(scope=APP_SCOPE, redirect_uri='https://playliste-exchange.herokuapp.com/',
                                                cache_path=session_cache_path(),
                                                show_dialog=True)
 
