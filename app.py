@@ -20,7 +20,7 @@ SESSION_TYPE = 'mongodb'
 '''
 DataBaseHandler = MongoUserHandler()
 app = Flask(__name__)
-site_url = 'http://127.0.0.1:5000/'
+site_url = 'https://playliste-exchange.herokuapp.com/'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config.from_object(__name__)
