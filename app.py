@@ -1,8 +1,3 @@
-"""
-
-TODO: make a user and db system that counts the number of playlist transfers.
-
-"""
 from flask_session import Session
 
 from flask import Flask, render_template, request, session, redirect, Response, send_file
@@ -12,12 +7,8 @@ import spotipy
 import requests
 from mongouserhandler import MongoUserHandler
 from flask_cors import CORS, cross_origin
+from threading import Thread
 
-'''
-PlaylistExchange
-UserData
-SESSION_TYPE = 'mongodb'
-'''
 DataBaseHandler = MongoUserHandler()
 app = Flask(__name__)
 site_url = 'https://playliste-exchange.herokuapp.com/'
@@ -70,9 +61,10 @@ def find_songs():
         playlist_created = sp_user.user_playlist_create(user=sp_user.me()['id'], name=song_list_dict['PlaylistName'],
                                                         public=song_list_dict['IsPrivate'], collaborative=False,
                                                         description=song_list_dict['Description'])
-        sp_user.playlist_add_items(playlist_created['id'], song_uri_list)
         DataBaseHandler.find_and_update_user(sp_user, song_uri_list.__len__())
         resp = Response(response=playlist_created['external_urls']['spotify'])
+        thread = Thread(target=sp_user.playlist_add_items, args=(playlist_created['id'], song_uri_list, ))
+        thread.start()
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -92,7 +84,6 @@ def request_html():
 
 @app.route('/about')
 def about():
-    spotify = None
     spotify = None
     if not session.get('uuid'):
         # Step 1. Visitor is unknown, give random ID
