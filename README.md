@@ -9,7 +9,7 @@
                 <div class="card">
                   <div class="content">
                     <section class="section">
-                        <h1 class="is-size-2">Playlist Exchange  ----- tryyyy</h1>
+                        <h1 class="is-size-2">Playlist Exchange</h1>
                             <section class="section">
                                 <p class="is-size-4">
                                     This app will take a playlist from Apple music and turn it into a spotify playlist. <br>
