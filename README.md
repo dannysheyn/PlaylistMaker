@@ -1,4 +1,8 @@
 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyles.css')}}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
       <section class="hero is-fullheight is-primary is-bold">
               <section class="section">
                 <div class="column is-9 is-offset-1">
